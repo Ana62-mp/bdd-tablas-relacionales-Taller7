@@ -107,3 +107,29 @@ ORDER BY la.anio_publicacion DESC, a.nombre ASC;
 SELECT a.nombre, COUNT(*) AS cantidad_libro FROM autores a -- * para encontrar posible errores
 INNER JOIN libro_autor la ON a.id = la.la_autor_id_fk
 GROUP BY a.nombre;
+
+
+-- PARTE 6: Modificación de la Tabla
+
+-- Agregar columna precio
+
+ALTER TABLE libros ADD COLUMN precio double precision;
+UPDATE libros SET precio = 15.00 WHERE precio IS NULL; -- Con esto si funciona alter
+ALTER TABLE libros ALTER COLUMN precio SET NOT NULL; --NO de una porque no todos libros tienen un precio, existe NULL. Para actualizar
+
+
+-- Actualizar precios
+
+UPDATE libros
+SET precio = 12.50
+WHERE codigo = 'L001';
+
+UPDATE libros
+SET precio = 22.50
+WHERE codigo = 'L002';
+
+UPDATE libros
+SET precio = 15.69
+WHERE codigo = 'L003';
+
+SELECT titulo, precio FROM libros;
