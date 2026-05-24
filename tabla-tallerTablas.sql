@@ -33,3 +33,41 @@ CREATE TABLE libro_autor(
 	CONSTRAINT  fk_autor FOREIGN KEY(la_autor_id_fk) REFERENCES autores(id)
 );
 
+-- PARTE 4: Insertar datos
+
+-- Insertar libros
+INSERT INTO libros (codigo, titulo, paginas) VALUES
+('L001', 'Base de Datos', 250),
+('L002', 'Programacion Java', 320),
+('L003', 'Desarrollo Web', 280),
+('L004', 'Inteligencia Artificial', 400);
+
+SELECT * FROM libros;
+
+-- Insertar autores
+INSERT INTO autores (id, nombre, pais) VALUES
+(1, 'Carlos Perez', 'Ecuador'),
+(2, 'Ana Gomez', 'Colombia'),
+(3, 'Luis Martinez', 'Mexico');
+
+SELECT * FROM autores;
+
+-- Insertar relaciones entre libros y autores
+INSERT INTO libro_autor 
+(la_libro_codigo_fk, la_autor_id_fk, anio_publicacion) VALUES
+('L001', 1, 2019),
+('L002', 1, 2021),
+('L003', 2, 2022),
+('L004', 3, 2023),
+('L001', 2, 2020);
+
+INSERT INTO libro_autor 
+(la_libro_codigo_fk, la_autor_id_fk, anio_publicacion) VALUES
+('L004', 2, 2015);
+
+INSERT INTO libro_autor 
+(la_libro_codigo_fk, la_autor_id_fk, anio_publicacion) VALUES
+('L004', 1, 2023);
+
+SELECT * FROM libro_autor;
+
